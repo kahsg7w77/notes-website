@@ -78,7 +78,32 @@ function displayNotes() {
         notesContainer.appendChild(noteDiv);
     });
 }
+// Search notes
+function searchNotes() {
+    const searchText = document
+        .getElementById("searchInput")
+        .value
+        .toLowerCase();
 
+    const filteredNotes = notes.filter(note =>
+        note.title.toLowerCase().includes(searchText) ||
+        note.content.toLowerCase().includes(searchText)
+    );
+
+    notesContainer.innerHTML = "";
+
+    filteredNotes.forEach((note, index) => {
+        const noteDiv = document.createElement("div");
+        noteDiv.className = "note";
+
+        noteDiv.innerHTML = `
+            <h3>${note.title}</h3>
+            <p>${note.content}</p>
+        `;
+
+        notesContainer.appendChild(noteDiv);
+    });
+}
 // Edit note
 function editNote(index) {
     titleInput.value = notes[index].title;
