@@ -54,6 +54,7 @@ async function addNote() {
 
 // Display notes
 function displayNotes() {
+    document .getElementById("notesCount").textContent = notes.length;
     notesContainer.innerHTML = "";
 
     notes.forEach((note, index) => {
